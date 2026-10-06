@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virat | Web Designer & Developer | Velocity Studio</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================
+       1. VARIABLES & RESET
+       ========================================== */
+    :root {
+      --bg-dark: #0a0c10;
+      --bg-card: rgba(18, 22, 31, 0.75);
+      --bg-card-hover: rgba(28, 35, 49, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.4);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #06b6d4;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --glow-color: rgba(99, 102, 241, 0.15);
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ==========================================
+       2. TYPOGRAPHY & BUTTONS
+       ========================================== */
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================
+       3. NAVIGATION
+       ========================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 1.25rem 0;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 12, 16, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================
+       4. HERO SECTION
+       ========================================== */
+    .hero {
+      padding: 10rem 0 6rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem auto;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ==========================================
+       5. DEMO NOTICE BANNER
+       ========================================== */
+    .notice-wrapper {
+      padding: 2rem 0;
+    }
+
+    .demo-notice {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .demo-notice i {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-top: 0.1rem;
+    }
+
+    .demo-notice-content h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #a5b4fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .demo-notice-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       6. SHOWCASE / PORTFOLIO GRID
+       ========================================== */
+    .showcase {
+      padding: 4rem 0;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(12px);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-color);
+    }
+
+    .card-preview {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #11141c;
+    }
+
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .card-preview img {
+      transform: scale(1.05);
+    }
+
+    .preview-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 12, 16, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .card-preview:hover .preview-overlay {
+      opacity: 1;
+    }
+
+    .overlay-badge {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .tech-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      margin-top: auto;
+    }
+
+    .btn-view-website {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.7rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn-view-website:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* ==========================================
+       7. SERVICES SECTION
+       ========================================== */
+    .services {
+      padding: 5rem 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
+    }
+
+    .service-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       8. ABOUT SECTION
+       ========================================== */
+    .about {
+      padding: 5rem 0;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .about-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 1.5rem auto;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .about-card p {
+      font-size: 1.2rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ==========================================
+       9. CALL TO ACTION & CONTACT
+       ========================================== */
+    .cta-section {
+      padding: 5rem 0 3rem 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.05));
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .cta-box h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .contact-section {
+      padding: 3rem 0 6rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-method-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .contact-method-card i {
+      font-size: 1.75rem;
+      color: var(--primary);
+    }
+
+    .whatsapp-btn-card {
+      background: rgba(37, 211, 102, 0.1);
+      border-color: rgba(37, 211, 102, 0.25);
+    }
+
+    .whatsapp-btn-card i {
+      color: #25d366;
+    }
+
+    .whatsapp-btn-card:hover {
+      background: rgba(37, 211, 102, 0.18);
+      border-color: rgba(37, 211, 102, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(10, 12, 16, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    /* ==========================================
+       10. FOOTER
+       ========================================== */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================
+       11. RESPONSIVE DESIGN
+       ========================================== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-dark);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 8rem 0 4rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">Virat<span>.</span></a>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#work">Demo Works</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span> Available for New Projects
+      </div>
+      <h1>I Build Modern Websites That<br><span class="gradient-text">Make Businesses Stand Out</span></h1>
+      <p>I design modern, responsive and high-converting websites for businesses, brands and creators.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">
+          <i class="fa-solid fa-eye"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fa-solid fa-paper-plane"></i> Let's Work Together
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO NOTICE BANNER & SHOWCASE SECTION -->
+  <section class="showcase" id="work">
+    <div class="container">
+      
+      <!-- DEMO NOTICE BANNER -->
+      <div class="notice-wrapper">
+        <div class="demo-notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <div class="demo-notice-content">
+            <h4>Important — These are Demo Previews</h4>
+            <p>These websites are demo concepts created to showcase my design and development capabilities. Your actual website will be designed and customized according to your business, requirements, branding, content and preferred style.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">My Website Demos</h2>
+      <p class="section-subtitle">Explore working live demos built for various industries. Click any card to launch the demo.</p>
+
+      <!-- DYNAMIC PORTFOLIO GRID -->
+      <div class="portfolio-grid" id="portfolio-grid">
+        <!-- JS will populate project cards here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Services Offered</h2>
+      <p class="section-subtitle">Tailored digital solutions built for modern performance and conversion.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <h3>Business Websites</h3>
+          <p>Professional online presence configured to establish industry trust and gain clients.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Landing Pages</h3>
+          <p>High-converting, sleek single-page sites customized for marketing campaigns.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+          <h3>Portfolio Websites</h3>
+          <p>Interactive portfolios for creatives, freelancers, and personal branding.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Restaurant Websites</h3>
+          <p>Visual menu showcases with built-in table booking & reservation layouts.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <h3>Gym Websites</h3>
+          <p>Dynamic fitness agency websites featuring membership plans and schedules.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <h3>Clinic Websites</h3>
+          <p>Clean healthcare layouts configured with online appointment capabilities.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Custom Website Design</h3>
+          <p>Unique, bespoke design code tailored specifically around your brand identity.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3>Website Redesign</h3>
+          <p>Revamp outdated legacy websites into modern, superfast responsive experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-card">
+        <div class="about-avatar">V</div>
+        <h2 class="section-title" style="margin-bottom:1rem;">About Virat</h2>
+        <p>"I’m Virat, a website designer and developer focused on creating modern, responsive and professional websites that help businesses build a stronger online presence."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION & CONTACT SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Have a business that needs a website?</h2>
+        <p>"Let's build a website that makes your business look professional online."</p>
+        <a href="#contact" class="btn btn-primary" style="font-size:1.05rem; padding: 1rem 2.2rem;">
+          <i class="fa-solid fa-paper-plane"></i> Start a Project
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Info & WhatsApp -->
+        <div class="contact-info">
+          <div>
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">Let's Connect</h3>
+            <p style="color: var(--text-muted);">Ready to upgrade your brand online? Reach out directly via phone, email or WhatsApp.</p>
+          </div>
+
+          <a href="https://wa.me/918976561603?text=Hi%20Virat,%20I'd%20like%20to%20discuss%20building%20a%20website%20for%20my%20business." target="_blank" class="contact-method-card whatsapp-btn-card">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div>
+              <h4 style="color:#25d366; font-size:1rem;">Chat on WhatsApp</h4>
+              <p style="font-size:0.88rem; color:var(--text-main); font-weight:600;">+91 8976561603</p>
+            </div>
+          </a>
+
+          <a href="mailto:velocitystudio00@gmail.com" class="contact-method-card">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <h4 style="font-size:1rem;">Email Inquiry</h4>
+              <p style="font-size:0.88rem; color:var(--text-main); font-weight:600;">velocitystudio00@gmail.com</p>
+            </div>
+          </a>
+
+          <a href="tel:+918976561603" class="contact-method-card">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <h4 style="font-size:1rem;">Direct Phone Call</h4>
+              <p style="font-size:0.88rem; color:var(--text-main); font-weight:600;">+91 8976561603</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required placeholder="John Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="john@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" placeholder="Your Company Name">
+          </div>
+
+          <div class="form-group">
+            <label for="website-type">What type of website do you need?</label>
+            <select id="website-type" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Business Website">Business Website</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="Portfolio Website">Portfolio Website</option>
+              <option value="Restaurant Website">Restaurant Website</option>
+              <option value="Gym Website">Gym Website</option>
+              <option value="Clinic Website">Clinic Website</option>
+              <option value="E-commerce Website">E-commerce Website</option>
+              <option value="Custom Website Design">Custom Website Design</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" required placeholder="Tell me a little bit about your website goals..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 10px;">
+            <i class="fa-solid fa-paper-plane"></i> Send Inquiry
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Virat | Velocity Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+     JAVASCRIPT & DATA STRUCTURE
+     ========================================== -->
+  <script>
+    /* ===================================================
+       1. PROJECT DATA STRUCTURE
+       =================================================== */
+    const projectsData = [
+      {
+        id: 1,
+        title: "Premium Gym Website",
+        category: "Fitness",
+        description: "Modern interactive website concept for a premium gym featuring workout schedules and membership plans.",
+        previewImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+        demoUrl: "https//paradox-five-fawn.vercel.app",
+        techStack: ["HTML5", "CSS3", "JavaScript"]
+      },
+      {
+        id: 2,
+        title: "Dental Clinic Website",
+        category: "Healthcare",
+        description: "Professional website concept designed for a modern dental clinic with appointment scheduling.",
+        previewImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
+        demoUrl: "https://example.com/demo/dental",
+        techStack: ["UI/UX", "Responsive", "Forms"]
+      },
+      {
+        id: 3,
+        title: "Restaurant Website",
+        category: "Restaurant",
+        description: "Stylish website concept with menu display, reservation-focused design, and location integration.",
+        previewImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+        demoUrl: "https://example.com/demo/restaurant",
+        techStack: ["Interactive Menu", "Reservations"]
+      },
+      {
+        id: 4,
+        title: "Real Estate Website",
+        category: "Real Estate",
+        description: "Modern property showcase website concept featuring filters and high-res image galleries.",
+        previewImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+        demoUrl: "https://example.com/demo/realestate",
+        techStack: ["Real Estate Grid", "Filter System"]
+      }
+    ];
+
+    /* ===================================================
+       2. RENDER PORTFOLIO CARDS
+       =================================================== */
+    function renderProjects() {
+      const grid = document.getElementById('portfolio-grid');
+      grid.innerHTML = '';
+
+      projectsData.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        
+        const techHtml = project.techStack
+          ? project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')
+          : '';
+
+        card.innerHTML = `
+          <div class="card-preview" onclick="openDemo('${project.demoUrl}')">
+            <img src="${project.previewImage}" alt="${project.title} Preview" loading="lazy">
+            <div class="preview-overlay">
+              <div class="overlay-badge">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to View Demo
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-tags">
+              <span class="tag">${project.category}</span>
+              ${techHtml}
+            </div>
+            <h3 class="card-title">${project.title}</h3>
+            <p class="card-description">${project.description}</p>
+            <div class="card-footer">
+              <button class="btn-view-website" onclick="openDemo('${project.demoUrl}')">
+                <span>View Website Demo</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openDemo(url) {
+      if (url && url !== "#") {
+        window.open(url, '_blank');
+      } else {
+        alert("Demo link not configured yet!");
+      }
+    }
+
+    /* ===================================================
+       3. INTERACTIVES & NAVIGATION
+       =================================================== */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Form submission helper redirecting to WhatsApp message directly
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const business = document.getElementById('business').value;
+      const websiteType = document.getElementById('website-type').value;
+      const message = document.getElementById('message').value;
+
+      const waMessage = `Hi Virat, I am ${name}${business ? ' from ' + business : ''}. I need a ${websiteType}. ${message}`;
+      const waUrl = `https://wa.me/918976561603?text=${encodeURIComponent(waMessage)}`;
+
+      window.open(waUrl, '_blank');
+      document.getElementById('contact-form').reset();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProjects);
+  </script>
+</body>
+</html>
